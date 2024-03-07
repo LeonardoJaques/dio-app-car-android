@@ -41,8 +41,9 @@
 
     <ImageView
         android:id="@+id/iv_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:src="@drawable/tesla_eletric_car"
         app:layout_constraintLeft_toLeftOf="@id/tv_carros"
         app:layout_constraintTop_toBottomOf="@id/tv_carros" />
@@ -123,5 +124,55 @@
         app:layout_constraintStart_toEndOf="@id/tv_refill"
         app:layout_constraintTop_toBottomOf="@id/tv_power" />
 
+    <EditText
+        android:id="@+id/et_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:ems="10"
+        android:hint="@string/price_kwh"
+        android:inputType="numberDecimal"
+        android:maxLines="2"
+        android:maxLength="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_refill" />
+
+    <EditText
+        android:id="@+id/et_km_travelled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="@string/km_travelled"
+        android:inputType="numberDecimal"
+        android:maxLength="10"
+        app:layout_constraintEnd_toEndOf="@+id/et_price"
+        app:layout_constraintStart_toStartOf="@+id/et_price"
+        app:layout_constraintTop_toBottomOf="@+id/et_price" />
+
+    <Button
+        android:id="@+id/bt_calculate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/calculate"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/et_km_travelled"
+        app:layout_constraintStart_toStartOf="@id/et_km_travelled"
+        app:layout_constraintTop_toBottomOf="@+id/et_km_travelled" 
+        />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="resultado"
+        android:textAlignment="center"
+        android:layout_margin="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_calculate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
