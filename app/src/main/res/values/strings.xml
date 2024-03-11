@@ -10,4 +10,8 @@
     <string name="price_kwh">Preço Kwh</string>
     <string name="km_travelled">km percorridos</string>
     <string name="calculate">calcular</string>
+    <string name="noWifiConnection">Ops! Parece que você está sem internet.</string>
+    <string name="response_error"> Algo de errado, por faveor tente mais tarde.</string>
+    <string name="saved_calc">saved_calc</string>
+
 </resources>
