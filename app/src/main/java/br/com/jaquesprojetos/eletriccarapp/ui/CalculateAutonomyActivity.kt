@@ -18,20 +18,35 @@ class CalculateAutonomyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculate_autonomy)
+        setupView()
+        setupListeners()
+        setupCachedResult()
+    }
+
+    private fun setupCachedResult() {
+        val calculatedValue = getSharedPref()
+        resultView.text = calculatedValue.toString()
+    }
+
+    private fun setupView() {
         price = findViewById<EditText>(R.id.et_price)
         btnCalculate = findViewById<Button>(R.id.bt_calculate)
         kmtraveled = findViewById<EditText>(R.id.et_km_travelled)
         resultView = findViewById<TextView>(R.id.tv_result)
         btnClose = findViewById<ImageView>(R.id.iv_close)
+
+    }
+
+    private fun setupListeners() {
         btnCalculate.setOnClickListener {
-            calculatePrice().toString()
+            calculatePrice()
         }
         btnClose.setOnClickListener {
             finish()
         }
     }
 
-    fun calculatePrice() {
+    private fun calculatePrice() {
         val price = price.text.toString().toFloat()
         val kmTraveled = kmtraveled.text.toString().toFloat()
         val result = price / kmTraveled
@@ -40,14 +55,18 @@ class CalculateAutonomyActivity : AppCompatActivity() {
 
     }
 
-    fun saveSharedPref(result: Float) {
+    private fun saveSharedPref(result: Float) {
         val sharedPref =
             getSharedPreferences("sharedPref", MODE_PRIVATE) ?: return
 
         with(sharedPref.edit()) {
-            putFloat(getString(R.string.price), result)
+            putFloat(getString(R.string.saved_calc), result)
             apply()
         }
+    }
 
+    private fun getSharedPref(): Float {
+        val sharedPref = getSharedPreferences("sharedPref", MODE_PRIVATE)
+        return sharedPref.getFloat(getString(R.string.saved_calc), 0.0f)
     }
 }
