@@ -10,13 +10,16 @@ import br.com.jaquesprojetos.eletriccarapp.R
 import br.com.jaquesprojetos.eletriccarapp.domain.Car
 
 class CardAdapter(
-    private val cars: List<Car>
+    private val cars: List<Car>,
+    private val isFavoriteScreen: Boolean = false
 ) : RecyclerView.Adapter<CardAdapter.ViewHolder>() {
 
     var carItemListener: (Car) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.car_item, parent, false)
+        val view = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.car_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -29,6 +32,9 @@ class CardAdapter(
             bateria.text = cars[position].bateria
             recarga.text = cars[position].recarga
             potencia.text = cars[position].potencia
+            if (isFavoriteScreen) {
+                holder.favorito.setImageResource(R.drawable.ic_star_selected)
+            }
             favorito.setOnClickListener {
                 val car = cars[position]
                 carItemListener(car)
@@ -39,6 +45,7 @@ class CardAdapter(
 
     private fun setupFavorite(car: Car, holder: ViewHolder) {
         car.isFavorite = !car.isFavorite
+
         if (car.isFavorite) holder.favorito.setImageResource(R.drawable.ic_star_selected)
         else holder.favorito.setImageResource(R.drawable.ic_star)
     }

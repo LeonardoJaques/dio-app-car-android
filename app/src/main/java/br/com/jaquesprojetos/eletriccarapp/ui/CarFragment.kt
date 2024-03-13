@@ -125,7 +125,10 @@ class CarFragment : Fragment() {
             adapter = carAdapter
         }
         carAdapter.carItemListener = {
-            CarRepository(requireContext()).save(it)
+//            CarRepository(requireContext()).save(it)
+//            CarRepository(requireContext()).findCarById(it.id.toLong())
+            CarRepository(requireContext()).saveIfNotExists(it)
+//            CarRepository(requireContext()).getAll()
         }
     }
 
