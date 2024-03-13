@@ -20,6 +20,10 @@ As tecnologias utilizadas para o desenvolvimento do aplicativo foram:
 - SQLite
 - Retrofit
 - Gson
+<a hrea="#">
+  <img src="https://github.com/LeonardoJaques/dio-app-car-android/assets/28495699/53f90e23-9ab7-4235-9105-af4e1f127cd5" style="display: block;
+  margin: 0 auto; width: 400px; height: 100%;" alt="picture of app with cars tesla"/>
+</a>
 
 ### Como executar
 Para executar o aplicativo, basta clonar o repositório e abrir o projeto no Android Studio. Após isso, basta
@@ -41,5 +45,5 @@ executar o aplicativo em um emulador android ou dispositivo físico com android.
 ### Licença
 Este projeto está sob a licença MIT.
 
-DIO - Digital Innovation One
+<i>Conteúdo Programático da [DIO](https://web.dio.me/)</i>
 
