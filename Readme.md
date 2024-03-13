@@ -26,8 +26,6 @@ Para executar o aplicativo, basta clonar o repositório e abrir o projeto no And
 executar o aplicativo em um emulador android ou dispositivo físico com android.
 
 ### Autor
-<h3>Autor</h3>
-
 <a href="https://www.linkedin.com/in/leonardojaques-dev/">
   <img src="https://avatars.githubusercontent.com/leonardojaques" style="border-radius: 50%; width: 100px; height: 100px;" alt="Leonardo Jacques"/>
  <br />
