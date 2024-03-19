@@ -19,14 +19,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/car_item" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_calculate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_calculate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <ProgressBar
         android:id="@+id/pd_loader"
@@ -55,15 +48,14 @@
 
     <TextView
         android:id="@+id/tv_no_wifi"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:visibility="gone"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:text="@string/noWifiConnection"
         android:textSize="18sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/iv_empty_state"
         app:layout_constraintStart_toStartOf="@id/iv_empty_state"
-        app:layout_constraintTop_toBottomOf="@id/iv_empty_state"
-         />
+        app:layout_constraintTop_toBottomOf="@id/iv_empty_state" />
 </androidx.constraintlayout.widget.ConstraintLayout>

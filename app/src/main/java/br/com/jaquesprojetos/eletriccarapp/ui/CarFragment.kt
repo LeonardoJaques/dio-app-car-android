@@ -1,10 +1,8 @@
 package br.com.jaquesprojetos.eletriccarapp.ui
 
 import android.content.Context
-import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,7 +20,6 @@ import br.com.jaquesprojetos.eletriccarapp.data.CarApi
 import br.com.jaquesprojetos.eletriccarapp.data.local.CarRepository
 import br.com.jaquesprojetos.eletriccarapp.domain.Car
 import br.com.jaquesprojetos.eletriccarapp.ui.adapter.CardAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,7 +27,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class CarFragment : Fragment() {
-    private lateinit var fabRedirect: FloatingActionButton
+
     private lateinit var carList: RecyclerView
     private lateinit var carApi: CarApi
     lateinit var progress: ProgressBar
@@ -48,7 +45,6 @@ class CarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews(view)
-        setListeners()
         setupRetrofit()
     }
 
@@ -102,18 +98,11 @@ class CarFragment : Fragment() {
 
     private fun setupViews(view: View) {
         view.apply {
-            fabRedirect = findViewById(R.id.fab_calculate)
+
             carList = findViewById(R.id.rv_car_list)
             progress = findViewById(R.id.pd_loader)
             noInternetImage = findViewById(R.id.iv_empty_state)
             noInternetText = findViewById(R.id.tv_no_wifi)
-        }
-    }
-
-    private fun setListeners() {
-        fabRedirect.setOnClickListener {
-            val intent = Intent(context, CalculateAutonomyActivity::class.java)
-            startActivity(intent)
         }
     }
 
@@ -125,30 +114,21 @@ class CarFragment : Fragment() {
             adapter = carAdapter
         }
         carAdapter.carItemListener = {
-//            CarRepository(requireContext()).save(it)
-//            CarRepository(requireContext()).findCarById(it.id.toLong())
+
             CarRepository(requireContext()).saveIfNotExists(it)
-//            CarRepository(requireContext()).getAll()
+
         }
     }
 
     private fun checkForInternet(context: Context?): Boolean {
         val connectivityManager =
             context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val network = connectivityManager.activeNetwork ?: return false
-            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
-            return when {
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                else -> false
-            }
-        } else {
-            @Suppress("DEPRECATION")
-            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
-            @Suppress("DEPRECATION")
-
-            return networkInfo.isConnected
+        val network = connectivityManager.activeNetwork ?: return false
+        val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return when {
+            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            else -> false
         }
 
     }

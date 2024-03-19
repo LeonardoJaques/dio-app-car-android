@@ -13,5 +13,6 @@
     <string name="noWifiConnection">Ops! Parece que você está sem internet.</string>
     <string name="response_error"> Algo de errado, por faveor tente mais tarde.</string>
     <string name="saved_calc">saved_calc</string>
+    <string name="string_calculate">calculate</string>
 
 </resources>
